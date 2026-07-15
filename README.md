@@ -18,12 +18,6 @@ python -m pip install .
 python -m shopping_cart examples/case_a.txt
 ```
 
-也可以透過標準輸入執行：
-
-```powershell
-Get-Content examples/case_b.txt | python -m shopping_cart
-```
-
 ## 測試
 
 ```powershell
