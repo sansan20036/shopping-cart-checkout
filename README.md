@@ -1,23 +1,53 @@
-````markdown
 # Shopping Cart Checkout
 
-使用 Python 實作品類促銷、優惠券及購物車結算規則。
+使用 **Python** 實作購物車結帳系統，支援**品類促銷、優惠券折扣**以及完整的結帳計算流程。
+
+---
+
+## 結算流程
+
+購物車結帳依照以下順序進行計算：
+
+1. 套用品類促銷
+2. 計算促銷後商品總金額
+3. 套用一張符合條件的優惠券
+4. 四捨五入至小數點後兩位
+5. 輸出最終結算金額
+
+---
+
+## 題目假設
+
+- 優惠券於到期日當天仍可使用。
+- 商品總額**等於**優惠券門檻時即可使用。
+- 優惠券門檻以**套用品類促銷後**的商品總額判定。
+- 同一品類於同一次結帳中最多只會套用一項品類促銷。
+
+---
+
+## 執行環境
+
+- Python 3.10 以上
+
+---
 
 ## 安裝
 
-專案支援 Python 3.10 以上版本，核心功能沒有第三方套件依賴。
+安裝專案：
 
-```powershell
+```bash
 python -m pip install .
 ```
 
 若直接在專案根目錄執行，也可以不先安裝。
 
-## 執行
+---
 
-執行 Case A：
+## 使用方式
 
-```powershell
+### Case A
+
+```bash
 python -m shopping_cart examples/case_a.txt
 ```
 
@@ -27,9 +57,11 @@ python -m shopping_cart examples/case_a.txt
 3083.60
 ```
 
-執行 Case B：
+---
 
-```powershell
+### Case B
+
+```bash
 python -m shopping_cart examples/case_b.txt
 ```
 
@@ -39,21 +71,27 @@ python -m shopping_cart examples/case_b.txt
 43.54
 ```
 
-程式成功時只會輸出四捨五入至小數點後兩位的結算金額。輸入不合法時會顯示錯誤訊息，並回傳非零 exit code。
+程式執行成功時，只會輸出**四捨五入至小數點後兩位**的最終結算金額。
 
-## 測試
+若輸入格式錯誤或資料不合法，程式會顯示錯誤訊息，並回傳非零（non-zero）exit code。
 
-使用 Python 標準函式庫執行所有單元測試：
+---
 
-```powershell
+## 執行測試
+
+使用 Python 內建的 `unittest` 執行所有單元測試：
+
+```bash
 python -m unittest discover -s tests -v
 ```
 
-Windows 也可以執行包含 Python 編譯檢查的自動化驗證：
+Windows 使用者也可以執行驗證腳本，除了測試之外，也會進行 Python 編譯檢查：
 
 ```powershell
 .\scripts\verify.ps1
 ```
+
+---
 
 ## 建置
 
@@ -63,19 +101,15 @@ Windows 也可以執行包含 Python 編譯檢查的自動化驗證：
 .\scripts\build.ps1
 ```
 
-建置完成的 wheel 套件會輸出至 `dist` 目錄。
+建置完成後，Wheel 套件將輸出至：
 
-## 計算順序
+```text
+dist/
+```
 
-1. 套用品類促銷。
-2. 加總折扣後金額。
-3. 套用一張有效優惠券。
-4. 四捨五入至小數點後兩位。
+---
 
-## 題目假設
 
-- 優惠券在到期日當天仍然有效。
-- 金額等於優惠券門檻時可以使用。
-- 優惠券門檻以商品促銷折扣後的總額判定。
-- 同一品類在同一天最多套用一項品類促銷。
-````
+## 授權
+
+本專案僅供學習、練習及技術面試展示使用。
